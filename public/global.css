@@ -26,12 +26,3 @@ body {
 	color: rgb(233, 233, 233);
 	font-family: -apple-system, sans-serif;
 }
-
-
-.panel {
-	background-color: rgb(17, 17, 17);
-
-	padding: 12px;
-
-	border-radius: 7px;
-}
