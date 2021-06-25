@@ -21,7 +21,7 @@
 
 </script>
 
-<SideNav  style="background-color: #0d0d0d;" isOpen={true}>
+<SideNav style="background-color: #0d0d0d;" isOpen={true}>
   <SideNavItems>
     <div class="root">
 
