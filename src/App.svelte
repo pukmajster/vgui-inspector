@@ -2,15 +2,14 @@
 	import { Content } from "carbon-components-svelte";
 	import Header from "./components/Header.svelte";
 	import ResourceTree from "./components/ResourceTree.svelte";
+	import VguiPanelProperties from "./components/VguiPanelProperties.svelte";
 
 </script>
 
-<div class="title" >VGUI Inspector </div>
-
 <ResourceTree />
 <Header />
-<Content style="background-color: transparent;"  >
-	awd
+<Content style="background-color: transparent; height: 100%; padding: 0; margin-top: 3em;"  >
+	<VguiPanelProperties />
 </Content>
 
 
