@@ -5,12 +5,16 @@ export type TokenizedKeyValues = string[];
 export function tokenizeKeyValueString(keyValuesString: string): TokenizedKeyValues {
   let list = [];
 
-  // Assure spacing between some reserved keywords or symbols
   let target = keyValuesString
-    .split('{').join(' { ')
+    .replace(/\/\*[\s\S]*?\*\/|\/\/.*/g,'')        // Get rid of comments
+    .replace(/ *\[[^\]]*]/g, '')                           // Get rid of conditionals
+    .split('{').join(' { ')                               // Assure spacing between some reserved keywords or symbols
     .split('}').join(' } ')
 
   let regexp = /[^\s"]+|"([^"]*)"/gi;
+
+  console.log(target);
+  
   
   do {
     //Each call to exec returns the next regex match as an array
@@ -23,5 +27,7 @@ export function tokenizeKeyValueString(keyValuesString: string): TokenizedKeyVal
     }
   } while (match != null);
 
+  console.log(list);
+  
   return list;
 }
