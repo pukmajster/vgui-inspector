@@ -74,4 +74,5 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
 public/build/
