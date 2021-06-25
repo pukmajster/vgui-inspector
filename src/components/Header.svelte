@@ -22,7 +22,7 @@
   
 </script>
 
-<Header company="VGUI Inspector" platformName={$vguiResource?.name} isSideNavOpen={true}>
+<Header company="VGUI Inspector" platformName={$vguiResource?.name}  isSideNavOpen={true}>
   <div slot="skip-to-content">
     <SkipToContent />
   </div>
