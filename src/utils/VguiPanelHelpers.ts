@@ -27,7 +27,7 @@ export type ParsedLayoutProperty = {
 // ---------------------------------------------------------------------------
 export function parsePosition(value: string): ParsedLayoutProperty {
 
-  let digit = value.replace(/[^\d.-]/g, '');
+  let digit = typeof value != 'undefined' ? value.replace(/[^\d.-]/g, '') : '0' ;
 
   return {
     f: value.includes('f'),
@@ -77,8 +77,7 @@ export function parseTall(value: string) {
   }
 
   return `
-    top: 50%;
-    height: ${ bguiBaseWidth - parsed.absolute}px;
+    height: ${ vguiBaseHeight - parsed.absolute}px;
   `
 }
 
@@ -88,15 +87,10 @@ export function parseTall(value: string) {
 export function parseXPos(value: string) {
   let parsed = parsePosition(value);
 
-  if(!parsed.c) {
-    return `
-      left: ${parsed.num}px;
-    `
-  }
-
-  return `
-    left: calc(50% - ${parsed.absolute}px);
-  `
+  if(parsed.c) return `left: calc(50% - ${parsed.absolute}px);`
+  // if(parsed.r) return `left: calc(100% - ${parsed.absolute}px);`
+  if(parsed.r) return `right: ${parsed.absolute}px;`
+  return `left: ${parsed.num}px;`
 }
 
 
@@ -106,13 +100,10 @@ export function parseXPos(value: string) {
 export function parseYPos(value: string) {
   let parsed = parsePosition(value);
 
-  if(!parsed.c) {
-    return `
-      top: ${parsed.num}px;
-    `
-  }
+  if(parsed.c) return `top: calc(50% - ${parsed.absolute}px);`
+  // if(parsed.r) return `top: calc(100% - ${parsed.absolute}px);`
 
-  return `
-    top: calc(50% - ${parsed.absolute}px);
-  `
+  if(parsed.r) return `bottom: ${parsed.absolute}px;`
+
+  return `top: ${parsed.num}px;`
 }
