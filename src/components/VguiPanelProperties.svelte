@@ -64,7 +64,6 @@ import { vguiAutoResizeOptions, vguiPinCorners } from "../utils/VguiChoices";
 
 <style lang="scss"  >
   .root {
-    max-width: 250px;
     height: 100%;
 
     padding-top: 3em;
