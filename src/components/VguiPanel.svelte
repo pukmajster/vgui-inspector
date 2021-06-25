@@ -1,11 +1,10 @@
 <script lang="ts">
   import { children } from "svelte/internal";
-import { parsePosition, parseTall, parseWide, parseXPos, parseYPos } from "../utils/VguiPanelHelpers";
+  import { currentEditingVguiPanel } from "../stores/VguiStore";
+  import { parsePosition, parseTall, parseWide, parseXPos, parseYPos } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
 
   export let panel: VguiPanel;
-
-
 
   function makeStyles(panelProperties) {
     let { wide = '0', tall = '0', xpos = '0', ypos = '0' } = panelProperties;
@@ -17,7 +16,6 @@ import { parsePosition, parseTall, parseWide, parseXPos, parseYPos } from "../ut
 
       ${parseXPos(xpos)}
       ${parseYPos(ypos)}
-
     `
   }
 
@@ -26,11 +24,16 @@ import { parsePosition, parseTall, parseWide, parseXPos, parseYPos } from "../ut
   }
 
   $: panelStyle = makeStyles(panel.properties);
+  $: highlight = $currentEditingVguiPanel?.name == panel?.name;
+
+  function setCurrentEditingVguiPanel() {
+    currentEditingVguiPanel.set(panel);
+  }
 </script>
 
-<div class="panel"  style={panelStyle} >
+<div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
 
-  <div class="name">{panel.properties.fieldName}</div>
+  <div class="name">{ panel.properties.labelText ?? panel.properties.fieldName }</div>
 
   {#each panel.children as child} 
     <svelte:self panel={child} />
@@ -39,12 +42,20 @@ import { parsePosition, parseTall, parseWide, parseXPos, parseYPos } from "../ut
 
 <style lang="scss" >
   .panel {
-    background-color: rgba(255, 13, 13, 0.042);
+    background-color: rgba(208, 208, 208, 0.076);
+    border-radius: 0px;
+
+    &.highlight {
+      background-color: rgba(215, 13, 255, 0.172);
+    }
+
+    &:hover {
+      background-color: rgba(215, 13, 255, 0.295);
+    }
   }
 
   .name {
     position: absolute;
-    top: 3px;
-    left: 5px;
+    left: 2px;
   }
 </style>
