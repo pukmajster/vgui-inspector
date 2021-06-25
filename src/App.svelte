@@ -3,15 +3,25 @@
 	import Header from "./components/Header.svelte";
 	import ResourceTree from "./components/ResourceTree.svelte";
 	import VguiPanelProperties from "./components/VguiPanelProperties.svelte";
+	import VguiPreview from "./components/VguiPreview.svelte";
 
+	const contentStyle = `
+		background-color: transparent;
+		height: 100%;
+		padding: 0;
+		margin-top: 3em;
+
+		display: grid;
+		grid-template-columns: 300px 1fr;
+	`
 </script>
 
 <ResourceTree />
 <Header />
-<Content style="background-color: transparent; height: 100%; padding: 0; margin-top: 3em;"  >
+<Content style={contentStyle}  >
 	<VguiPanelProperties />
+	<VguiPreview />
 </Content>
-
 
 <style lang="scss" global >
 
