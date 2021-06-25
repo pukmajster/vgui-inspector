@@ -1,0 +1,60 @@
+export const kvExample = `"Resource/UI/Cloud.res"
+{
+	"Cloud"
+	{
+		"ControlName"		"Frame"
+		"fieldName"			"Cloud"
+		"xpos"				"0"
+		"ypos"				"0"
+		"wide"				"f0"
+		"tall"				"228"
+		"autoResize"		"0"
+		"pinCorner"			"0"
+		"visible"			"1"
+		"enabled"			"1"
+		"tabPosition"		"0"
+	}
+	
+	"DrpCloud"
+	{
+		"ControlName"		"DropDownMenu"
+		"fieldName"			"DrpCloud"
+		"xpos"				"c-180"
+		"ypos"				"110"
+		"zpos"				"3"
+		"wide"				"360"
+		"tall"				"15"
+		"visible"			"1"
+		"enabled"			"1"
+		"usetitlesafe"		"0"
+		"tabPosition"		"0"
+		"navUp"				"BtnCancel"
+		"navDown"			"BtnCancel"
+				
+		"BtnDropButton"
+		{
+			"ControlName"				"L4D360HybridButton"
+			"fieldName"					"BtnDropButton"
+			"xpos"						"0"
+			"ypos"						"0"
+			"zpos"						"0"
+			"wide"						"360"
+			"wideatopen"				"260"	
+			"tall"						"15"
+			"autoResize"				"1"
+			"pinCorner"					"0"
+			"visible"					"1"
+			"enabled"					"1"
+			"tabPosition"				"1"
+			"AllCaps"					"1"
+			"labelText"					"#L4D360UI_Cloud_KeepInSync"
+			"tooltiptext"				"#L4D360UI_Cloud_Enabled_Tip3"
+			"disabled_tooltiptext"		"#L4D360UI_Cloud_KeepInSync"
+			"style"						"DropDownButton"
+			"command"					"FlmCloud"
+			"ActivationType"			"1"
+			"OnlyActiveUser"			"1"
+		}
+	}
+}
+`
