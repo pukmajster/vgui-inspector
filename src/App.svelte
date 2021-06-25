@@ -9,8 +9,8 @@
 
 <ResourceTree />
 <Header />
-<Content>
-	
+<Content style="background-color: transparent;"  >
+	awd
 </Content>
 
 

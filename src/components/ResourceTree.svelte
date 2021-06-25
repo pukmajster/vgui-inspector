@@ -20,7 +20,7 @@
   import ResourceTreePanel from "./ResourceTreePanel.svelte";
 </script>
 
-<SideNav isOpen={true}>
+<SideNav style="background-color: #FFFFFF0A;" isOpen={true}>
   <SideNavItems>
     {#if $vguiResource != null} 
       <ResourceTreePanel panel={$vguiResource} />
