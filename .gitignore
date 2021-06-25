@@ -74,5 +74,4 @@ typings/
 
 # FuseBox cache
 .fusebox/
-public/build/bundle.js
-public/build/bundle.js.map
+public/build/
