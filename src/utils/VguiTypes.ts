@@ -25,6 +25,7 @@ export type VguiPanelProperties = {
 
   // Label and button specific properties
   textAlignment?: string;
+  labelText?: string;
   font?: string;
   dulltext?: string;
   brighttext?: string;
