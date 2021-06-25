@@ -23,7 +23,5 @@ export function tokenizeKeyValueString(keyValuesString: string): TokenizedKeyVal
     }
   } while (match != null);
 
-  console.log(list);
-
   return list;
 }

@@ -21,8 +21,6 @@ export function parseVguiRes(tokenizedKeyValues: TokenizedKeyValues) {
     let token = '';
     while(true) {
       token = parseList[parsingAt];
-      console.log(token);
-      
 
       // This marks the end of the panel
       if (token == '}') {
