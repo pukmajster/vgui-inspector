@@ -11,7 +11,10 @@ export function parseVguiRes(tokenizedKeyValues: TokenizedKeyValues) {
     // Prepare an empty VGUI Panel
     let vguiPanel: VguiPanel = {
       name: parseList[parsingAt++],
-      properties: {},
+      properties: {
+        enabled: true,
+        visible: true,
+      },
       children: []
     }
 
