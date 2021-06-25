@@ -10,18 +10,18 @@ export type VguiPanelProperties = {
   ControlName?: string;
   fieldName?: string;
  
-  tall?: string;
   wide?: string;
+  tall?: string;
   xpos?: string;
   ypos?: string;
   autoResize?: string;
   pinCorner?: string;
+  proportionalToParent?: boolean;
 
   visible?: boolean;
   enabled?: boolean;
 
   tabPosition?: number;
-  proportionalToParent?: boolean;
 
   // Label and button specific properties
   textAlignment?: string;
