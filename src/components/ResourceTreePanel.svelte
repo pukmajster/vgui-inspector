@@ -1,33 +1,26 @@
 <script lang="ts">
   import {
-    Header,
-    HeaderNav,
-    HeaderNavItem,
-    HeaderNavMenu,
-    SideNav,
-    SideNavItems,
     SideNavMenu,
     SideNavMenuItem,
     SideNavLink,
-    SideNavDivider,
-    SkipToContent,
-    Content,
-    Grid,
-    Row,
-    Column,
   } from "carbon-components-svelte";
-  import { children } from "svelte/internal";
+  import { currentEditingVguiPanel, vguiResource } from "../stores/VguiStore";
   import type { VguiPanel } from "../utils/VguiTypes";
 
   export let panel: VguiPanel;
+
+  function setCurrentEditingVguiPanel() {
+    currentEditingVguiPanel.set(panel);
+  }
+
 </script>
 
 {#if panel.children.length == 0} 
-  <SideNavLink text={panel.name} />
+  <SideNavLink text={panel.name} on:click={() => setCurrentEditingVguiPanel()} />
 {/if}
 
 {#if panel.children.length > 0} 
-  <SideNavMenuItem  text={panel.name} />
+  <SideNavMenuItem  text={panel.name}  on:click={() => setCurrentEditingVguiPanel()} />
   <SideNavMenu text={panel.name + ' children'}>
     <div style="background-color: #0000001F"  >
       {#each panel.children as child} 
@@ -36,8 +29,6 @@
     </div>
   </SideNavMenu>
 {/if}
-
-
 
 
     <!-- <SideNavLink text="Link 1" />

@@ -18,16 +18,24 @@
   } from "carbon-components-svelte";
   import { vguiResource } from "../stores/VguiStore";
   import ResourceTreePanel from "./ResourceTreePanel.svelte";
+
 </script>
 
-<SideNav style="background-color: #FFFFFF0A;" isOpen={true}>
+<SideNav  style="background-color: #0d0d0d;" isOpen={true}>
   <SideNavItems>
-    {#if $vguiResource != null} 
-      <ResourceTreePanel panel={$vguiResource} />
-    {/if}
+    <div class="root">
+
+      {#if $vguiResource != null} 
+        <ResourceTreePanel panel={$vguiResource} />
+      {/if}
+
+    </div>
+
   </SideNavItems>
 </SideNav>
 
 <style lang="scss" >
-
+  .root {
+    color: white;
+  }
 </style>
