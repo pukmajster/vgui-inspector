@@ -18,10 +18,8 @@
 
 <div class="container">
 
-
-	<div class="vguiRoot" bind:offsetWidth={viewportWidth} bind:offsetHeight={viewportHeight} >
+	<div class="vguiRoot" bind:offsetWidth={viewportWidth} bind:offsetHeight={viewportHeight} class:adaptive={$enableAdaptingViewport} class:fixed={!($enableAdaptingViewport)} >
 		<p class="viewportSize" >{$viewportScales.width}, {$viewportScales.height} </p>
-
 
 		{#if $vguiResource} 
 			{#each $vguiResource.children as child} 
@@ -53,6 +51,24 @@
 		background-color: rgb(28, 28, 28);
 
 		position: relative;
+	}
+
+	.fixed {
+		width: 640px;
+		height: 480px;
+		max-width: 640px;
+		max-height: 480px;
+		min-width: 640px;
+		min-height: 480px;
+	}
+
+	.adaptive {
+		width: unset;
+		height: unset;
+		min-width: 300px;
+		min-height: 200px;
+		resize: both;
+  	overflow: auto;
 	}
 
 	.viewportSize {

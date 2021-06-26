@@ -7,9 +7,9 @@
     HeaderNavMenu,
     SkipToContent,
     Modal,
-    TextArea, TextInput 
+    TextArea, TextInput, Toggle 
   } from "carbon-components-svelte";
-  import { vguiResource } from "../stores/VguiStore";
+  import { enableAdaptingViewport, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
@@ -18,6 +18,10 @@
   function submitLoad() {
     showLoad = false;
     tokenizeResFileAndParseToVgui(loadValue);
+  }
+
+  function toggleAdaptiveViewport() {
+    enableAdaptingViewport.update(_old => !_old);
   }
   
 </script>
@@ -32,6 +36,8 @@
       <HeaderNavItem text="Load .res" on:click={() => (showLoad = true)} />
       <HeaderNavItem text="Save as .res" />
     </HeaderNavMenu>
+
+    <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  />
   </HeaderNav>
 </Header>
 

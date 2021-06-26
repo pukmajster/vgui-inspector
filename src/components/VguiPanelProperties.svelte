@@ -58,7 +58,7 @@ import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils
       />
 
       <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_corner_to_sibling} labelText="Pin Corner To Sibling" placeholder=""  />
-      <Toggle size="sm"bind:toggled={$currentEditingVguiPanel.properties.pin_to_sibling_corner} labelText="Pin To Sibling Corner " placeholder=""  />
+      <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_to_sibling_corner} labelText="Pin To Sibling Corner " placeholder=""  />
 
       <div style="height: 300px"></div>
     {/if}
