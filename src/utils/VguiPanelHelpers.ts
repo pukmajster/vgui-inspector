@@ -24,3 +24,11 @@ export type ViewportDimensions = {
   width: number,
   height: number
 }
+
+export const booleanVguiPanelProperties = [
+  'visible',
+  'enabled',
+  'proportionalToParent',
+  'pin_to_sibling_corner',
+  'pin_corner_to_sibling'
+]

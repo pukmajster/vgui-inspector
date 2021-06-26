@@ -1,5 +1,6 @@
 import { vguiResource } from "../stores/VguiStore";
 import { TokenizedKeyValues, tokenizeKeyValueString } from "./KeyValues";
+import { booleanVguiPanelProperties } from "./VguiPanelHelpers";
 import type { VguiPanel } from "./VguiTypes";
 
 export function parseVguiRes(tokenizedKeyValues: TokenizedKeyValues) {
@@ -40,7 +41,11 @@ export function parseVguiRes(tokenizedKeyValues: TokenizedKeyValues) {
       }
 
       // We have a property! 
-      vguiPanel.properties[token] = tokenAdjacent;
+      if(booleanVguiPanelProperties.includes(token))
+        vguiPanel.properties[token] =( tokenAdjacent == '1');
+      else
+        vguiPanel.properties[token] = tokenAdjacent;
+      
       parsingAt += 2;
     }
   
