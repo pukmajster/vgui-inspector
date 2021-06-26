@@ -8,7 +8,7 @@
     Dropdown
   } from "carbon-components-svelte";
   import { currentEditingVguiPanel, vguiResource } from "../stores/VguiStore";
-import { vguiAutoResizeOptions, vguiPinCorners } from "../utils/VguiChoices";
+import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils/VguiChoices";
 
   // This hack makes the entire structure update correctly
   $: {
@@ -30,8 +30,8 @@ import { vguiAutoResizeOptions, vguiPinCorners } from "../utils/VguiChoices";
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.ControlName} labelText="ControlName" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.fieldName} labelText="fieldName" placeholder=""  />
 
-      <Toggle  size="sm" bind:toggled={$currentEditingVguiPanel.properties.visible} labelText="Visible" placeholder=""  />
-      <Toggle   size="sm"bind:toggled={$currentEditingVguiPanel.properties.enabled} labelText="Enabled" placeholder=""  />
+      <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.visible} labelText="Visible" placeholder=""  />
+      <Toggle size="sm"bind:toggled={$currentEditingVguiPanel.properties.enabled} labelText="Enabled" placeholder=""  />
 
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.tall} labelText="Tall" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.wide} labelText="Wide" placeholder=""  />
@@ -42,7 +42,7 @@ import { vguiAutoResizeOptions, vguiPinCorners } from "../utils/VguiChoices";
       <Dropdown
         titleText="Pin Corner"
         selectedIndex={0}
-        items={vguiPinCorners.map(_pinCorner => ({
+        items={vguiPinCorners2.map(_pinCorner => ({
           id: _pinCorner,
           text: _pinCorner
         }))}
@@ -51,11 +51,14 @@ import { vguiAutoResizeOptions, vguiPinCorners } from "../utils/VguiChoices";
       <Dropdown
         titleText="Auto Resize"
         selectedIndex={0}
-        items={vguiAutoResizeOptions.map(_pinCorner => ({
-          id: _pinCorner,
-          text: _pinCorner
+        items={vguiAutoResizeOptions.map(_autoResizeOption => ({
+          id: _autoResizeOption,
+          text: _autoResizeOption
         }))}
       />
+
+      <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_corner_to_sibling} labelText="Pin Corner To Sibling" placeholder=""  />
+      <Toggle size="sm"bind:toggled={$currentEditingVguiPanel.properties.pin_to_sibling_corner} labelText="Pin To Sibling Corner " placeholder=""  />
 
       <div style="height: 300px"></div>
     {/if}
