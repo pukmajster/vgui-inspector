@@ -3,14 +3,16 @@
   import { currentEditingVguiPanel, viewportProportions, viewportScales } from "../stores/VguiStore";
 import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
+import VguiPanelProperties from "./VguiPanelProperties.svelte";
 
   export let panel: VguiPanel;
 
   function makeStyles(panelProperties, scales, proportions) {
-    let { wide = '0', tall = '0', xpos = '0', ypos = '0' } = panelProperties;
+    let { wide = '0', tall = '0', xpos = '0', ypos = '0', RoundedCorners = 0 } = panelProperties;
 
     return `
       position: absolute;
+      border-radius: ${RoundedCorners}px;
       ${parseWide(wide)}
       ${parseTall(tall)}
       ${parseXPos(xpos)}
@@ -70,7 +72,7 @@ import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPane
   function parseXPos(value: string) {
     let parsed = parsePosition(value);
 
-    if(parsed.c) return `left: calc(50% - ${parsed.absolute * $viewportScales.width}px);`
+    if(parsed.c) return `left: calc(50% + ${parsed.num * $viewportScales.width}px);`
     if(parsed.r) return `right: ${parsed.absolute * $viewportScales.width}px;`
     return `left: ${parsed.num * $viewportScales.width}px;`
   }
@@ -82,7 +84,7 @@ import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPane
   function parseYPos(value: string) {
     let parsed = parsePosition(value);
 
-    if(parsed.c) return `top: calc(50% - ${parsed.absolute * $viewportScales.height }px);`
+    if(parsed.c) return `top: calc(50% + ${parsed.num * $viewportScales.height }px);`
     if(parsed.r) return `bottom: ${parsed.absolute* $viewportScales.height}px;`
     return `top: ${parsed.num * $viewportScales.height}px;`
   }
@@ -97,13 +99,15 @@ import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPane
   $: hasLabel = panel?.properties?.labelText && panel?.properties?.labelText !== '""'
 </script>
 
-<div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
-  <div class="name">{ hasLabel ? panel?.properties?.labelText : panel.properties.fieldName }</div>
+{#if panel.properties.visible }
+  <div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
+    <div class="name">{ hasLabel ? panel?.properties?.labelText : panel.properties.fieldName }</div>
 
-  {#each panel.children as child} 
-    <svelte:self panel={child} />
-  {/each}
-</div>
+    {#each panel.children as child} 
+      <svelte:self panel={child} />
+    {/each}
+  </div>
+{/if}
 
 <style lang="scss" >
   .panel {
