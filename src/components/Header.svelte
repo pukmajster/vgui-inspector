@@ -9,7 +9,7 @@
     Modal,
     TextArea, TextInput, Toggle 
   } from "carbon-components-svelte";
-  import { enableAdaptingViewport, vguiResource } from "../stores/VguiStore";
+  import { enableAdaptingViewport, showAllHidden, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
@@ -23,6 +23,10 @@
   function toggleAdaptiveViewport() {
     enableAdaptingViewport.update(_old => !_old);
   }
+
+  function toggleShowAllHidden() {
+    showAllHidden.update(_old => !_old);
+  }
   
 </script>
 
@@ -34,7 +38,10 @@
   <HeaderNav>
     <HeaderNavMenu text="File">
       <HeaderNavItem text="Load .res" on:click={() => (showLoad = true)} />
-      <HeaderNavItem text="Save as .res" />
+    </HeaderNavMenu>
+    
+    <HeaderNavMenu text="View">
+      <HeaderNavItem text={$showAllHidden ? 'Hide all hidden' : 'Show all hidden'} on:click={() => toggleShowAllHidden()} />
     </HeaderNavMenu>
 
     <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  />

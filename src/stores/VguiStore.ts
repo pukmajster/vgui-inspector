@@ -10,6 +10,7 @@ export const viewportProportions = writable({
 })
 
 export const enableAdaptingViewport = writable(false);
+export const showAllHidden = writable(false);
 
 export const viewportScales = derived(
   [viewportProportions, enableAdaptingViewport],

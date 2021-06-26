@@ -1,6 +1,6 @@
 <script lang="ts">
   import { children } from "svelte/internal";
-  import { currentEditingVguiPanel, viewportProportions, viewportScales } from "../stores/VguiStore";
+  import { currentEditingVguiPanel, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
 import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
 import VguiPanelProperties from "./VguiPanelProperties.svelte";
@@ -99,9 +99,11 @@ import VguiPanelProperties from "./VguiPanelProperties.svelte";
   $: hasLabel = panel?.properties?.labelText && panel?.properties?.labelText !== '""'
 </script>
 
-{#if panel.properties.visible }
+{#if panel.properties.visible || $showAllHidden }
   <div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
-    <div class="name">{ hasLabel ? panel?.properties?.labelText : panel.properties.fieldName }</div>
+    {#if panel.children.length == 0 }
+      <div class="name">{ hasLabel ? panel?.properties?.labelText : panel.properties.fieldName }</div>
+    {/if}
 
     {#each panel.children as child} 
       <svelte:self panel={child} />
