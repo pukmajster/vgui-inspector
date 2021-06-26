@@ -41,12 +41,12 @@
 	}
 
 	.vguiRoot {
-		width: 640px;
-		height: 480px;
+		/* width: 640px; */
+		/* height: 480px; */
 		/* resize: both; */
   	/* overflow: auto; */
-		/* width: 100%;
-		aspect-ratio: 4 / 3; */
+		width: 80%;
+		aspect-ratio: 4 / 3;
 
 		background-color: rgb(28, 28, 28);
 
@@ -54,20 +54,20 @@
 	}
 
 	.fixed {
-		width: 640px;
-		height: 480px;
-		max-width: 640px;
+		width: 640px; 
+	height: 480px;
+		/* max-width: 640px;
 		max-height: 480px;
 		min-width: 640px;
-		min-height: 480px;
+		min-height: 480px; */
 	}
 
 	.adaptive {
-		width: unset;
+		/* width: unset;
 		height: unset;
 		min-width: 300px;
-		min-height: 200px;
-		resize: both;
+		min-height: 200px; */
+		resize: horizontal;
   	overflow: auto;
 	}
 
