@@ -12,7 +12,7 @@
 		margin-top: 3em;
 
 		display: grid;
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 270px 1fr;
 	`
 </script>
 
