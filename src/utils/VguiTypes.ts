@@ -21,6 +21,12 @@ export type VguiPanelProperties = {
   visible?: boolean;
   enabled?: boolean;
 
+  pin_to_sibling?: string;
+  pin_to_sibling_corner?: boolean;
+  pin_corner_to_sibling?: boolean;
+
+  RoundedCorners?: number;
+
   tabPosition?: number;
 
   // Label and button specific properties
@@ -31,4 +37,4 @@ export type VguiPanelProperties = {
   brighttext?: string;
 } 
 
-export type VguiTextAlignment = 'north-west' | 'south-west';
+export type VguiTextAlignment = 'north-west' | 'north' | 'north-east' | 'west' | 'center' | 'east' | 'south-west' | 'south' | 'south-east';
