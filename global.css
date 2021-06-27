@@ -1,0 +1,28 @@
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+
+	overflow: hidden;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: rgb(19, 19, 19);
+	color: rgb(233, 233, 233);
+	font-family: -apple-system, sans-serif;
+}
