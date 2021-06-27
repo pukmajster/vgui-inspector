@@ -19,8 +19,8 @@
 <div class="container">
 	<div class="vguiRoot adaptive  " style={`aspect-ratio: ${$aspectRatio};`}  bind:offsetWidth={viewportWidth} bind:offsetHeight={viewportHeight} >
 
-<p class="" >{$viewportScales.width}, {$viewportScales.height} </p>
-{#if $vguiResource} 
+		<!-- <p class="" >{$viewportScales.width}, {$viewportScales.height} </p> -->
+		{#if $vguiResource} 
 			{#each $vguiResource.children as child} 
 				<VguiPanel panel={child} />
 			{/each}
