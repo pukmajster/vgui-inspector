@@ -1,7 +1,7 @@
 <script lang="ts">
 	import App from "../App.svelte";
 
-	import { enableAdaptingViewport, vguiResource, viewportProportions, viewportScales } from "../stores/VguiStore";
+	import { aspectRatio, enableAdaptingViewport, vguiResource, viewportProportions, viewportScales } from "../stores/VguiStore";
 	import { vguiBaseWidth, vguiBaseHeight } from "../utils/VguiPanelHelpers";
 
 	import VguiPanel from "./VguiPanel.svelte";
@@ -17,11 +17,10 @@
 </script>
 
 <div class="container">
+	<div class="vguiRoot adaptive  " style={`aspect-ratio: ${$aspectRatio};`}  bind:offsetWidth={viewportWidth} bind:offsetHeight={viewportHeight} >
 
-	<div class="vguiRoot" bind:offsetWidth={viewportWidth} bind:offsetHeight={viewportHeight} class:adaptive={$enableAdaptingViewport} class:fixed={!($enableAdaptingViewport)} >
-		<p class="viewportSize" >{$viewportScales.width}, {$viewportScales.height} </p>
-
-		{#if $vguiResource} 
+<p class="" >{$viewportScales.width}, {$viewportScales.height} </p>
+{#if $vguiResource} 
 			{#each $vguiResource.children as child} 
 				<VguiPanel panel={child} />
 			{/each}
@@ -35,7 +34,6 @@
 		height: 100%;
 
 		padding: 3em;
-
 		display: grid;
 		place-items: center;
 	}
@@ -46,7 +44,7 @@
 		/* resize: both; */
   	/* overflow: auto; */
 		width: 80%;
-		aspect-ratio: 4 / 3;
+		/* aspect-ratio: 4 / 3; */
 
 		background-color: rgb(28, 28, 28);
 
@@ -54,8 +52,8 @@
 	}
 
 	.fixed {
-		width: 640px; 
-	height: 480px;
+		/* width: 640px; 
+		height: 480px; */
 		/* max-width: 640px;
 		max-height: 480px;
 		min-width: 640px;
@@ -63,10 +61,7 @@
 	}
 
 	.adaptive {
-		/* width: unset;
-		height: unset;
-		min-width: 300px;
-		min-height: 200px; */
+
 		resize: horizontal;
   	overflow: auto;
 	}

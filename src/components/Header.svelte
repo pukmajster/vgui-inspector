@@ -7,9 +7,10 @@
     HeaderNavMenu,
     SkipToContent,
     Modal,
-    TextArea, TextInput, Toggle 
+    TextArea, TextInput, Toggle, Dropdown, AspectRatio 
   } from "carbon-components-svelte";
-  import { enableAdaptingViewport, showAllHidden, vguiResource } from "../stores/VguiStore";
+  import { text } from "svelte/internal";
+  import { aspectRatio, aspectRatios, enableAdaptingViewport, showAllHidden, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
@@ -26,6 +27,10 @@
 
   function toggleShowAllHidden() {
     showAllHidden.update(_old => !_old);
+  }
+
+  function updateAspectRatio(value) {
+    aspectRatio.set(value);
   }
   
 </script>
@@ -44,7 +49,14 @@
       <HeaderNavItem text={$showAllHidden ? 'Hide all hidden' : 'Show all hidden'} on:click={() => toggleShowAllHidden()} />
     </HeaderNavMenu>
 
-    <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  />
+    <HeaderNavMenu text={`Aspect Ratio: ${$aspectRatio}`}>
+      {#each aspectRatios as _ar} 
+        <HeaderNavItem text={_ar} on:click={() => updateAspectRatio(_ar)} />
+      {/each}
+    </HeaderNavMenu>
+
+    <!-- <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  /> -->
+  
   </HeaderNav>
 </Header>
 
@@ -61,5 +73,8 @@
 
 
 <style lang="scss" >
-
+  .inlineTools {
+    display: flex;
+    align-items: center;
+  }
 </style>
