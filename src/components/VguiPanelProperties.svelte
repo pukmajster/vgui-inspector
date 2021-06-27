@@ -37,7 +37,7 @@ import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.wide} labelText="Wide" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.xpos} labelText="X Position" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.ypos} labelText="Y Position" placeholder=""  />
-
+<!-- 
       <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.proportionalToParent} labelText="Proportional To Parent" placeholder=""  />
       <Dropdown
         titleText="Pin Corner"
@@ -58,9 +58,9 @@ import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils
       />
 
       <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_corner_to_sibling} labelText="Pin Corner To Sibling" placeholder=""  />
-      <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_to_sibling_corner} labelText="Pin To Sibling Corner " placeholder=""  />
+      <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.pin_to_sibling_corner} labelText="Pin To Sibling Corner " placeholder=""  /> -->
 
-      <div style="height: 300px"></div>
+      <!-- <div style="height: 300px"></div> -->
     {/if}
   </div>
 </div>

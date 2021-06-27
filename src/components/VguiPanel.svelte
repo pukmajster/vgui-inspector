@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { currentEditingVguiPanel, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
+  import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
   import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
   import VguiPanelProperties from "./VguiPanelProperties.svelte";
@@ -103,7 +103,13 @@
 {#if panel.properties.visible || $showAllHidden }
   <div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
     {#if panel.children.length == 0 }
-      <div class="name">{ hasLabel ? panel?.properties?.labelText : panel.properties.fieldName }</div>
+      <div class="name">{ 
+        hasLabel
+        ? 
+          ($panelLabelOptions.labels ? panel?.properties?.labelText : '')
+        :
+          ($panelLabelOptions.panelName ? panel?.properties?.fieldName : '')
+      }</div>
     {/if}
 
     {#each panel.children as child} 

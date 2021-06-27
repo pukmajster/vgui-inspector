@@ -7,10 +7,10 @@
     HeaderNavMenu,
     SkipToContent,
     Modal,
-    TextArea, TextInput, Toggle, Dropdown, AspectRatio 
+    TextArea, TextInput, Toggle, Dropdown, AspectRatio, SideNavDivider 
   } from "carbon-components-svelte";
   import { text } from "svelte/internal";
-  import { aspectRatio, aspectRatios, enableAdaptingViewport, showAllHidden, vguiResource } from "../stores/VguiStore";
+  import { aspectRatio, aspectRatios, enableAdaptingViewport, panelLabelOptions, showAllHidden, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
@@ -32,6 +32,14 @@
   function updateAspectRatio(value) {
     aspectRatio.set(value);
   }
+
+  function TogglePanelLabelOption(option: string) {
+    panelLabelOptions.update(_old => {
+      let copy = { ..._old };
+      copy[option] = !copy[option];
+      return copy;
+    })
+  }
   
 </script>
 
@@ -47,6 +55,11 @@
     
     <HeaderNavMenu text="View">
       <HeaderNavItem text={$showAllHidden ? 'Hide all hidden' : 'Show all hidden'} on:click={() => toggleShowAllHidden()} />
+
+      <SideNavDivider />
+
+      <HeaderNavItem text={$panelLabelOptions.panelName ? 'Hide Panel Names' : 'Show Panel Names'} on:click={() => TogglePanelLabelOption('panelName')} />
+      <HeaderNavItem text={$panelLabelOptions.labels ? 'Hide Labels' : 'Show Labels'} on:click={() => TogglePanelLabelOption('labels')} />
     </HeaderNavMenu>
 
     <HeaderNavMenu text={`Aspect Ratio: ${$aspectRatio}`}>
@@ -54,6 +67,8 @@
         <HeaderNavItem text={_ar} on:click={() => updateAspectRatio(_ar)} />
       {/each}
     </HeaderNavMenu>
+
+    
 
     <!-- <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  /> -->
   

@@ -24,3 +24,9 @@ export const viewportScales = derived(
 export type AspectRatio = '4 / 3' | '16 / 9' | '16 / 10' | '2 / 1';
 export const aspectRatios: AspectRatio[] = ['4 / 3', '16 / 9', '16 / 10', '2 / 1']
 export const aspectRatio = writable<AspectRatio>('4 / 3');
+
+export const panelLabelOptions = writable({
+  allPanelNames: false,
+  panelName: true,
+  labels: true,
+})
