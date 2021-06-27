@@ -15,7 +15,7 @@ export const showAllHidden = writable(false);
 export const viewportScales = derived(
   [viewportProportions, enableAdaptingViewport],
   ([$viewportProportions, $enableAdaptingViewport]) => ({
-    width: $enableAdaptingViewport ? ($viewportProportions.width / vguiBaseWidth) : 1,
+    width: $enableAdaptingViewport ? ($viewportProportions.height / vguiBaseHeight) : 1,
     height: $enableAdaptingViewport ? ($viewportProportions.height / vguiBaseHeight) : 1,
   })
 )

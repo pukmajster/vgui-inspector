@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { children } from "svelte/internal";
   import { currentEditingVguiPanel, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
-import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
+  import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
-import VguiPanelProperties from "./VguiPanelProperties.svelte";
+  import VguiPanelProperties from "./VguiPanelProperties.svelte";
 
   export let panel: VguiPanel;
 
@@ -51,6 +50,7 @@ import VguiPanelProperties from "./VguiPanelProperties.svelte";
   function parseWide(value: string) {
     let parsed = parsePosition(value);
 
+    if(parsed.f) return `width: calc( 100% - ${ (parsed.absolute * $viewportScales.width) }px);`
     if(parsed.f) return `width: ${ $viewportProportions.width - (parsed.absolute  * $viewportScales.width)}px;`
     return `width: ${parsed.num * $viewportScales.width}px;`
   }
@@ -62,6 +62,7 @@ import VguiPanelProperties from "./VguiPanelProperties.svelte";
   function parseTall(value: string) {
     let parsed = parsePosition(value);
 
+    if(parsed.f) return `height: calc( 100% - ${ (parsed.absolute * $viewportScales.height) }px);`
     if(parsed.f) return `height: ${ $viewportProportions.height - (parsed.absolute * $viewportScales.height)}px;`
     return `height: ${parsed.num * $viewportScales.height}px;`
   }
