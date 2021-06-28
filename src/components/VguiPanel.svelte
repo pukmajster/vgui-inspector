@@ -107,7 +107,7 @@
   <div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
     {#if panel.children.length == 0 }
       <div class="name">{ 
-        hasLabel || /button|label/.test(panel.properties.ControlName.toLowerCase())
+        hasLabel || /button|label/.test(panel?.properties?.ControlName?.toLowerCase())
         ? 
           (
             $panelLabelOptions.labels
@@ -128,7 +128,7 @@
 <style lang="scss" >
   .panel {
     background-color: rgba(208, 208, 208, 0.076);
-    border-radius: 0px;
+    word-wrap: break-word;
 
     &.highlight {
       background-color: rgba(215, 13, 255, 0.172);
