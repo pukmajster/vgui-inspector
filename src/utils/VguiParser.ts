@@ -13,8 +13,8 @@ export function parseVguiRes(tokenizedKeyValues: TokenizedKeyValues) {
     let vguiPanel: VguiPanel = {
       name: parseList[parsingAt++],
       properties: {
-        enabled: true,
-        visible: true,
+        enabled: false,
+        visible: false,
       },
       children: []
     }
