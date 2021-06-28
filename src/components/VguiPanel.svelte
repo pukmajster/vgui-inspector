@@ -52,7 +52,7 @@ import Header from "./Header.svelte";
   function parseWide(value: string) {
     let parsed = parsePosition(value);
 
-    if(parsed.f) return `right: calc( 0px - ${ (parsed.absolute * $viewportScales.width) }px);` 
+    if(parsed.f) return `right: calc( 0px + ${ (parsed.absolute * $viewportScales.width) }px);` 
     // if(parsed.f) return `width: calc( 100% - ${ (parsed.absolute * $viewportScales.width) }px);` 
     // if(parsed.f) return `width: ${ $viewportProportions.width - (parsed.absolute  * $viewportScales.width)}px;`
     return `width: ${parsed.num * $viewportScales.width}px;`
@@ -65,7 +65,7 @@ import Header from "./Header.svelte";
   function parseTall(value: string) {
     let parsed = parsePosition(value);
 
-    if(parsed.f) return `bottom: calc( 0px - ${ (parsed.absolute * $viewportScales.height) }px);` 
+    if(parsed.f) return `bottom: calc( 0px + ${ (parsed.absolute * $viewportScales.height) }px);` 
     // if(parsed.f) return `height: calc( 100% - ${ (parsed.absolute * $viewportScales.height) }px);`
     // if(parsed.f) return `height: ${ $viewportProportions.height - (parsed.absolute * $viewportScales.height)}px;`
     return `height: ${parsed.num * $viewportScales.height}px;`
