@@ -106,7 +106,7 @@
     <TextArea style="min-height: 400px" labelText="VGUI Resource" bind:value={loadValue}  />
 
     <div class="conditionals">
-      <p>Conditonals</p>
+      <p>Conditionals</p>
       {#each (Object.keys(conditionals)) as _conditional, i}
         <Checkbox labelText={_conditional} bind:checked={conditionals[_conditional]} />
       {/each}
