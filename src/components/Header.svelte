@@ -7,18 +7,18 @@
     HeaderNavMenu,
     SkipToContent,
     Modal,
-    TextArea, TextInput, Toggle, Dropdown, AspectRatio, SideNavDivider 
+    TextArea, TextInput, Toggle, Dropdown, AspectRatio, SideNavDivider, Checkbox 
   } from "carbon-components-svelte";
-  import { text } from "svelte/internal";
   import { aspectRatio, aspectRatios, enableAdaptingViewport, panelLabelOptions, showAllHidden, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
+import type { Conditionals } from "../utils/VguiPanelHelpers";
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
   let showLoad = false;
   let loadValue = kvExample;
   function submitLoad() {
     showLoad = false;
-    tokenizeResFileAndParseToVgui(loadValue);
+    tokenizeResFileAndParseToVgui(loadValue, conditionals);
   }
 
   function toggleAdaptiveViewport() {
@@ -40,7 +40,24 @@
       return copy;
     })
   }
-  
+
+  // 
+  $: conditionals = <Conditionals>(() => {
+    let allMatches = loadValue.match(/\[(.*?)\]/g) ?? [];
+
+    let temp = {};
+
+    for(let _conditional of allMatches) {
+      if(!temp[_conditional]) {
+        temp[_conditional] = true;
+      }
+    }
+
+    return temp;
+  })()
+
+
+  $: console.log(conditionals)
 </script>
 
 <Header company="VGUI Inspector" platformName={$vguiResource?.name}  isSideNavOpen={true}>
@@ -68,7 +85,6 @@
       {/each}
     </HeaderNavMenu>
 
-    
 
     <!-- <Toggle bind:toggled={$enableAdaptingViewport} size="sm" labelB="Adaptive Viewport Enabled" labelA="Adaptive Viewport Disabled"  /> -->
   
@@ -76,6 +92,7 @@
 </Header>
 
 <Modal
+  size="lg"
   bind:open={showLoad}
   modalHeading="Load VGUI Resource"
   primaryButtonText="Load"
@@ -83,13 +100,29 @@
   on:click:button--secondary={() => (showLoad = false)}
   on:submit={() => submitLoad()}
 >
-  <TextArea labelText="VGUI Resource" bind:value={loadValue}  />
+  <div class="import-res-root">
+    <TextArea style="min-height: 400px" labelText="VGUI Resource" bind:value={loadValue}  />
+
+    <div class="conditionals">
+      <p>Conditonals</p>
+      {#each (Object.keys(conditionals)) as _conditional, i}
+        <Checkbox labelText={_conditional} bind:checked={conditionals[_conditional]} />
+      {/each}
+    </div>
+  </div>
 </Modal>
 
 
 <style lang="scss" >
-  .inlineTools {
-    display: flex;
-    align-items: center;
+  .import-res-root {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+
+    gap: 10px;
+    min-height: 400px;
+
+    & > div, & textarea {
+      min-height: 400px !important;
+    }
   }
 </style>
