@@ -91,6 +91,7 @@ import Header from "./Header.svelte";
 
     if(parsed.c) return `top: calc(50% + ${parsed.num * $viewportScales.height }px);`
     if(parsed.r) return `bottom: ${parsed.absolute* $viewportScales.height}px;`
+    if(parsed.d) return `bottom: ${parsed.absolute* $viewportScales.height}px;`
     return `top: ${parsed.num * $viewportScales.height}px;`
   }
 
