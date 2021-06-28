@@ -1,5 +1,4 @@
 <script lang="ts">
-  import App from "../App.svelte";
   import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
   import type { ParsedLayoutProperty } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
