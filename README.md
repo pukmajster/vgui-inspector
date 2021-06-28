@@ -3,7 +3,7 @@
  
 # Comparsion
 Below is a comparsion of the actual in-game UI and the the same UI previewed in VGUI Inspector
-![Comparsion](/media/comparsion.png)
+![Comparsion](/media/comparison.png)
 
 
 # Screenshots
