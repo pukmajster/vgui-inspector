@@ -33,8 +33,8 @@ import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils
       <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.visible} labelText="Visible" placeholder=""  />
       <Toggle size="sm"bind:toggled={$currentEditingVguiPanel.properties.enabled} labelText="Enabled" placeholder=""  />
 
-      <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.tall} labelText="Tall" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.wide} labelText="Wide" placeholder=""  />
+      <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.tall} labelText="Tall" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.xpos} labelText="X Position" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.ypos} labelText="Y Position" placeholder=""  />
 <!-- 
