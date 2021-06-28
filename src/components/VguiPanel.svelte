@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
+  import App from "../App.svelte";
+import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
   import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
+import Header from "./Header.svelte";
   import VguiPanelProperties from "./VguiPanelProperties.svelte";
 
   export let panel: VguiPanel;
@@ -104,9 +106,13 @@
   <div class="panel" class:highlight  style={panelStyle}  on:click={() => setCurrentEditingVguiPanel()}>
     {#if panel.children.length == 0 }
       <div class="name">{ 
-        hasLabel
+        hasLabel || /button|label/.test(panel.properties.ControlName.toLowerCase())
         ? 
-          ($panelLabelOptions.labels ? panel?.properties?.labelText : '')
+          (
+            $panelLabelOptions.labels
+            ?
+              (panel?.properties?.labelText ? panel?.properties?.labelText : panel?.properties?.fieldName)
+            : '')
         :
           ($panelLabelOptions.panelName ? panel?.properties?.fieldName : '')
       }</div>
