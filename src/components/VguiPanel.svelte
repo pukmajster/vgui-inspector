@@ -1,10 +1,8 @@
 <script lang="ts">
   import App from "../App.svelte";
-import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
-  import type { ParsedLayoutProperty, ViewportDimensions } from "../utils/VguiPanelHelpers";
+  import { currentEditingVguiPanel, panelLabelOptions, showAllHidden, viewportProportions, viewportScales } from "../stores/VguiStore";
+  import type { ParsedLayoutProperty } from "../utils/VguiPanelHelpers";
   import type { VguiPanel } from "../utils/VguiTypes";  
-import Header from "./Header.svelte";
-  import VguiPanelProperties from "./VguiPanelProperties.svelte";
 
   export let panel: VguiPanel;
 
@@ -53,8 +51,6 @@ import Header from "./Header.svelte";
     let parsed = parsePosition(value);
 
     if(parsed.f) return `right: calc( 0px + ${ (parsed.absolute * $viewportScales.width) }px);` 
-    // if(parsed.f) return `width: calc( 100% - ${ (parsed.absolute * $viewportScales.width) }px);` 
-    // if(parsed.f) return `width: ${ $viewportProportions.width - (parsed.absolute  * $viewportScales.width)}px;`
     return `width: ${parsed.num * $viewportScales.width}px;`
   }
 
@@ -66,8 +62,6 @@ import Header from "./Header.svelte";
     let parsed = parsePosition(value);
 
     if(parsed.f) return `bottom: calc( 0px + ${ (parsed.absolute * $viewportScales.height) }px);` 
-    // if(parsed.f) return `height: calc( 100% - ${ (parsed.absolute * $viewportScales.height) }px);`
-    // if(parsed.f) return `height: ${ $viewportProportions.height - (parsed.absolute * $viewportScales.height)}px;`
     return `height: ${parsed.num * $viewportScales.height}px;`
   }
 
@@ -82,7 +76,6 @@ import Header from "./Header.svelte";
     return `left: ${parsed.num * $viewportScales.width}px;`
   }
 
-
   // ---------------------------------------------------------------------------
   //  Make panel styling for ypos
   // ---------------------------------------------------------------------------
@@ -95,13 +88,18 @@ import Header from "./Header.svelte";
     return `top: ${parsed.num * $viewportScales.height}px;`
   }
 
+  // Update styling when any of these conditions change
   $: panelStyle = makeStyles(panel.properties, $viewportScales, $viewportProportions);
+
+  // Highlight the panel currently being edited.
   $: highlight = $currentEditingVguiPanel?.name == panel?.name;
 
+  // Clicking a panel will open the properties menu for the panel
   function setCurrentEditingVguiPanel() {
     currentEditingVguiPanel.set(panel);
   }
 
+  // Determine if the panel has a non-empty labelText property to show
   $: hasLabel = panel?.properties?.labelText && panel?.properties?.labelText !== '""'
 </script>
 
