@@ -10,8 +10,12 @@ export const viewportProportions = writable({
 })
 
 export const enableAdaptingViewport = writable(true);
+
+// Forces all hidden panels to be drawn regardless of their 'visible' property.
 export const showAllHidden = writable(false);
 
+// VGUI scales xpos, ypos, wide, and tall properties based on the window's height, which
+// is why viewportScales.width is scaled to fit the height.
 export const viewportScales = derived(
   [viewportProportions, enableAdaptingViewport],
   ([$viewportProportions, $enableAdaptingViewport]) => ({
@@ -20,7 +24,7 @@ export const viewportScales = derived(
   })
 )
 
-
+// Lets the user to select an aspect ratio for the viewport
 export type AspectRatio = '4 / 3' | '16 / 9' | '16 / 10' | '2 / 1';
 export const aspectRatios: AspectRatio[] = ['4 / 3', '16 / 9', '16 / 10', '2 / 1']
 export const aspectRatio = writable<AspectRatio>('4 / 3');

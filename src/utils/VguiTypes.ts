@@ -27,14 +27,8 @@ export type VguiPanelProperties = {
 
   RoundedCorners?: number;
 
-  tabPosition?: number;
-
   // Label and button specific properties
-  textAlignment?: string;
   labelText?: string;
-  font?: string;
-  dulltext?: string;
-  brighttext?: string;
 } 
 
 export type VguiTextAlignment = 'north-west' | 'north' | 'north-east' | 'west' | 'center' | 'east' | 'south-west' | 'south' | 'south-east';

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import App from "../App.svelte";
-
 	import { aspectRatio, enableAdaptingViewport, vguiResource, viewportProportions, viewportScales } from "../stores/VguiStore";
 	import { vguiBaseWidth, vguiBaseHeight } from "../utils/VguiPanelHelpers";
 
@@ -39,29 +37,12 @@
 	}
 
 	.vguiRoot {
-		/* width: 640px; */
-		/* height: 480px; */
-		/* resize: both; */
-  	/* overflow: auto; */
 		width: 80%;
-		/* aspect-ratio: 4 / 3; */
-
 		background-color: rgb(28, 28, 28);
-
 		position: relative;
 	}
 
-	.fixed {
-		/* width: 640px; 
-		height: 480px; */
-		/* max-width: 640px;
-		max-height: 480px;
-		min-width: 640px;
-		min-height: 480px; */
-	}
-
 	.adaptive {
-
 		resize: horizontal;
   	overflow: auto;
 	}

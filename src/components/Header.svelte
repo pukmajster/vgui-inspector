@@ -7,11 +7,11 @@
     HeaderNavMenu,
     SkipToContent,
     Modal,
-    TextArea, TextInput, Toggle, Dropdown, AspectRatio, SideNavDivider, Checkbox 
+    TextArea, SideNavDivider, Checkbox 
   } from "carbon-components-svelte";
   import { aspectRatio, aspectRatios, enableAdaptingViewport, panelLabelOptions, showAllHidden, vguiResource } from "../stores/VguiStore";
   import { kvExample } from "../utils/KvTest";
-import type { Conditionals } from "../utils/VguiPanelHelpers";
+  import type { Conditionals } from "../utils/VguiPanelHelpers";  
   import { tokenizeResFileAndParseToVgui } from "../utils/VguiParser";
 
   let showLoad = false;
@@ -21,6 +21,7 @@ import type { Conditionals } from "../utils/VguiPanelHelpers";
     tokenizeResFileAndParseToVgui(loadValue, conditionals);
   }
 
+  // TODO: Remove all traces of adaptive viewport?
   function toggleAdaptiveViewport() {
     enableAdaptingViewport.update(_old => !_old);
   }
@@ -41,7 +42,8 @@ import type { Conditionals } from "../utils/VguiPanelHelpers";
     })
   }
 
-  // 
+  // Gather a list of all conditionals within the RES file
+  // TODO: This implementation is poo. Improve it?
   $: conditionals = <Conditionals>(() => {
     let allMatches = loadValue.match(/\[(.*?)\]/g) ?? [];
 

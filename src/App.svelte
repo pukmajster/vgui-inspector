@@ -9,7 +9,6 @@
 		background-color: transparent;
 		height: 100%;
 		padding: 0;
-		margin-top: 3em;
 
 		display: grid;
 		grid-template-columns: 270px 1fr;

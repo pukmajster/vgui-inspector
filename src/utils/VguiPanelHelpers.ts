@@ -1,6 +1,10 @@
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
+
+// VGUI by default scales all size and position values to these dimensions,
+// thus a width of 640 pixels effectively represents the entire screen, when
+// "proportionality" is enabled, which is by default in VGUI.
 export const vguiBaseWidth = 640;
 export const vguiBaseHeight = 480;
 
@@ -15,7 +19,7 @@ export const vguiBaseHeight = 480;
 // d: down
 // r: right
 // s: scale
-// ... and some other I haven't bothered implementing
+// ... and some others I haven't bothered implementing
 export type ParsedLayoutProperty = {
   f: boolean;
   c: boolean;
@@ -33,6 +37,7 @@ export type ViewportDimensions = {
   height: number
 }
 
+// When parsing these values, '0's and '1's will be parsed as false and true, respectively 
 export const booleanVguiPanelProperties = [
   'visible',
   'enabled',

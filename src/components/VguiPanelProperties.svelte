@@ -1,14 +1,9 @@
 <script lang="ts">
   import {
-    FluidForm,
     TextInput,
-    PasswordInput,
-    SideNavDivider,
     Toggle,
-    Dropdown
   } from "carbon-components-svelte";
   import { currentEditingVguiPanel, vguiResource } from "../stores/VguiStore";
-import { vguiAutoResizeOptions, vguiPinCorners, vguiPinCorners2 } from "../utils/VguiChoices";
 
   // This hack makes the entire structure update correctly
   $: {

@@ -40,7 +40,6 @@
       value: digit,
       num: parseInt(digit)
     }
-
   }
 
   

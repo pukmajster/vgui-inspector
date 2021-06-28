@@ -14,7 +14,6 @@
   function setCurrentEditingVguiPanel() {
     currentEditingVguiPanel.set(panel);
   }
-
 </script>
 
 {#if panel.children.length == 0} 
@@ -38,8 +37,6 @@
       {/each}
     </div>
   {/if}
-
-  
 {/if}
 
 <style lang="scss" >
