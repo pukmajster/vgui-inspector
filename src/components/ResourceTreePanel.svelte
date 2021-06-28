@@ -4,10 +4,12 @@
     SideNavMenuItem,
     SideNavLink,
   } from "carbon-components-svelte";
-  import { currentEditingVguiPanel, vguiResource } from "../stores/VguiStore";
+
+  import { currentEditingVguiPanel } from "../stores/VguiStore";
   import type { VguiPanel } from "../utils/VguiTypes";
 
   export let panel: VguiPanel;
+  export let root: boolean = false;
 
   function setCurrentEditingVguiPanel() {
     currentEditingVguiPanel.set(panel);
@@ -20,28 +22,25 @@
 {/if}
 
 {#if panel.children.length > 0} 
-  <SideNavMenuItem  text={panel.name}  on:click={() => setCurrentEditingVguiPanel()} />
-  <SideNavMenu text={panel.name + ' children'}>
+  {#if !root}
+    <SideNavMenuItem  text={panel.name}  on:click={() => setCurrentEditingVguiPanel()} />
+    <SideNavMenu text={panel.name + ' children'}>
+      <div style="background-color: #0000001F"  >
+        {#each panel.children as child} 
+          <svelte:self panel={child} />
+        {/each}
+      </div>
+    </SideNavMenu>
+  {:else} 
     <div style="background-color: #0000001F"  >
       {#each panel.children as child} 
         <svelte:self panel={child} />
       {/each}
     </div>
-  </SideNavMenu>
+  {/if}
+
+  
 {/if}
-
-
-    <!-- <SideNavLink text="Link 1" />
-    <SideNavLink text="Link 2" />
-    <SideNavLink text="Link 3" />
-    <SideNavMenu text="Menu">
-      <SideNavMenuItem href="/" text="Link 1" />
-      <SideNavMenuItem href="/" text="Link 2" />
-      <SideNavMenuItem href="/" text="Link 3" />
-    </SideNavMenu>
-    <SideNavDivider />
-    <SideNavLink text="Link 4" /> -->
-
 
 <style lang="scss" >
 

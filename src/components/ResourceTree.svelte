@@ -26,7 +26,7 @@
     <div class="root">
 
       {#if $vguiResource != null} 
-        <ResourceTreePanel panel={$vguiResource} />
+        <ResourceTreePanel panel={$vguiResource} root={true}  />
       {/if}
 
     </div>
