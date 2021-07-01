@@ -18,7 +18,7 @@
 
     return `
       position: absolute;
-      border-radius: ${RoundedCorners}px;
+      // border-radius: ${RoundedCorners}px;
       z-index: ${zpos};
       ${parseWide(wide)}
       ${parseTall(tall)}
@@ -41,6 +41,7 @@
       d: value.includes('d'),
       r: value.includes('r'),
       s: value.includes('s'),
+      percent: value.includes('%'),
 
       absolute: Math.abs( parseInt(digit)),
       negative: value.includes('-'),
@@ -57,6 +58,7 @@
   function parseWide(value: string) {
     let parsed = parsePosition(value);
 
+    if(parsed.percent) return `width: ${parsed.num}%;` 
     if(parsed.f) return `right: calc( 0px + ${ (parsed.absolute * $viewportScales.width) }px);` 
     return `width: ${parsed.num * $viewportScales.width}px;`
   }
@@ -68,6 +70,7 @@
   function parseTall(value: string) {
     let parsed = parsePosition(value);
 
+    if(parsed.percent) return `height: ${parsed.num}%;` 
     if(parsed.f) return `bottom: calc( 0px + ${ (parsed.absolute * $viewportScales.height) }px);` 
     return `height: ${parsed.num * $viewportScales.height}px;`
   }

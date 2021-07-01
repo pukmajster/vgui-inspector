@@ -18,14 +18,16 @@ export const vguiBaseHeight = 480;
 // c: center
 // d: down
 // r: right
-// s: scale
-// ... and some others I haven't bothered implementing
+// %: width/height of parent in percentage (Used in Titanfall/Apex legends version of the sauce engine)
+// ... and some others I haven't bothered implementing such as P, O and S
 export type ParsedLayoutProperty = {
   f: boolean;
   c: boolean;
   d: boolean;
   r: boolean;
   s: boolean;
+  percent: boolean;
+
   negative: boolean;
   absolute: number;
   value: string;
