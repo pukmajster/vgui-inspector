@@ -32,6 +32,7 @@
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.tall} labelText="Tall" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.xpos} labelText="X Position" placeholder=""  />
       <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.ypos} labelText="Y Position" placeholder=""  />
+      <TextInput size="sm" bind:value={$currentEditingVguiPanel.properties.zpos} labelText="Z Position" placeholder=""  />
 <!-- 
       <Toggle size="sm" bind:toggled={$currentEditingVguiPanel.properties.proportionalToParent} labelText="Proportional To Parent" placeholder=""  />
       <Dropdown

@@ -7,11 +7,19 @@
 
   // TODO: Consider proportionalToParent
   function makeStyles(panelProperties, scales, proportions) {
-    let { wide = '0', tall = '0', xpos = '0', ypos = '0', RoundedCorners = 0 } = panelProperties;
+    let {
+      wide = '0',
+      tall = '0',
+      xpos = '0',
+      ypos = '0',
+      zpos = '0',
+      RoundedCorners = '0',
+    } = panelProperties;
 
     return `
       position: absolute;
       border-radius: ${RoundedCorners}px;
+      z-index: ${zpos};
       ${parseWide(wide)}
       ${parseTall(tall)}
       ${parseXPos(xpos)}

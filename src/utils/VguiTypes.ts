@@ -14,6 +14,7 @@ export type VguiPanelProperties = {
   tall?: string;
   xpos?: string;
   ypos?: string;
+  zpos?: string;
   autoResize?: string;
   pinCorner?: string;
   proportionalToParent?: boolean;
@@ -30,5 +31,7 @@ export type VguiPanelProperties = {
   // Label and button specific properties
   labelText?: string;
 } 
+
+
 
 export type VguiTextAlignment = 'north-west' | 'north' | 'north-east' | 'west' | 'center' | 'east' | 'south-west' | 'south' | 'south-east';
